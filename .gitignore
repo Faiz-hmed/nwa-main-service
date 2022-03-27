@@ -1,0 +1,4 @@
+.vscode
+core/
+migrations
+__pycache__
