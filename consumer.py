@@ -13,6 +13,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters('mq'))
 channel = connection.channel()
 
 def query_db(kwargs):
+    aths = []
     ath_obs = []
     c_obs = []
     article = None 
@@ -20,10 +21,10 @@ def query_db(kwargs):
     
     time_written = kwargs.get("TimeWritten", None)
 
-    if type (kwargs["Author"])== str:
-        kwargs["Author"] = list(kwargs["Author"])
-    print("kwargs...",kwargs)
-    return
+    if type (kwargs["Author"]) != list:
+        aths.append(kwargs["Author"])
+        kwargs["Author"] = aths
+    
     for a in kwargs["Author"]:
         ath_obs.append( models.Author.objects.get_or_create(name=a, publication=kwargs["Publication"])[0] )
 

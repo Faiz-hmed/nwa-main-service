@@ -30,8 +30,8 @@ urlpatterns = [
     url(r'^$', serve,
         kwargs={'path': 'index.html'}),
 
-    # url(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
-    #     RedirectView.as_view(url='/static/%(path)s', permanent=False)),
+    url(r'^(?!/?static/)(?!/?media/)(?P<path>.*\..*)$',
+        RedirectView.as_view(url='/static/%(path)s', permanent=False)),
 ]
 urlpatterns += [
     path('__debug__/', include('debug_toolbar.urls'))       #Debug toolbar url routers
